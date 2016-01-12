@@ -23,8 +23,15 @@ def count_unique_words(filename):
             #     dict_of_words[word] += 1
     file_data.close()
     word_counts = Counter(words)
-    for key, value in word_counts.iteritems():
-        print key, value
+    list_of_tuples = sorted(word_counts.items())
+    sorted_by_count = sorted(list_of_tuples, key=lambda tup: tup[1], reverse=True)
+    # print sorted_by_count
+
+    for item in sorted_by_count:
+        print item[0], item[1]
+
+    # for key, value in word_counts.iteritems():
+    #     print key, value
 
 filename=sys.argv[1]
 count_unique_words(filename)
